@@ -30,7 +30,7 @@ django-admin startproject LittleLemon .
 python3 manage.py startapp LittleLemonAPI
 ```
 
-# Install Framework
+## Install Framework
 ```bash
 pipenv install djangorestframework
 pipenv install django-debug-toolbar
