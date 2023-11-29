@@ -5,6 +5,12 @@ name = "pypi"
 
 [packages]
 django = "*"
+djangorestframework = "*"
+djoser = "*"
+django-debug-toolbar = "*"
+djangorestframework-xml = "*"
+bleach = "*"
+django-filter = "*"
 
 [dev-packages]
 
