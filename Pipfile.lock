@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9218c925b7e74df2e5f16d7999812230b13db2894d4c4c5aeeb703195dc40f98"
+            "sha256": "c1967142383b82712af819490e1339f2b66846e51a4c2bd36407dd2dbce64734"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -280,6 +280,7 @@
                 "sha256:631d7ae2ed4365d7196a35d3cc0f6d382f7bd3361fb24c894f8f92b4da5db27d",
                 "sha256:8e4c5dfca8d11c0b8a66dfd8a4e3fc1c6aa7ea188d10907ff91c942f4b52ed66"
             ],
+            "index": "pypi",
             "markers": "python_version >= '3.7'",
             "version": "==5.3.0"
         },
@@ -380,11 +381,11 @@
         },
         "social-auth-core": {
             "hashes": [
-                "sha256:3d4154f45c0bacffe54ccf4361bce7e66cf5f5cd1bb0ebb7507ad09a1b07d9d9",
-                "sha256:f4ae5d8e503a401f319498bcad59fd1f6c473517eeae89c22299250f63c33365"
+                "sha256:307a4ba64d4f3ec86e4389163eac1d8b8656ffe5ab2e964aeff043ab00b3a662",
+                "sha256:54d0c598bf6ea0ec12bbcf78bee035c7cd604b5d781d80b7997e9e033c3ac05d"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==4.5.0"
+            "version": "==4.5.1"
         },
         "sqlparse": {
             "hashes": [

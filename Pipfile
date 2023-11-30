@@ -11,6 +11,7 @@ django-debug-toolbar = "*"
 djangorestframework-xml = "*"
 bleach = "*"
 django-filter = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 

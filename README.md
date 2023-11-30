@@ -34,9 +34,10 @@ python3 manage.py startapp LittleLemonAPI
 ```bash
 pipenv install djangorestframework
 pipenv install django-debug-toolbar
-pipenv install djangorestframework-xml
+# pipenv install djangorestframework-xml
 pipenv install bleach
-pipenv install django-filter
+pipenv install djoser
+# pipenv install djangorestframework-simplejwt
 ```
 
 # Run server
