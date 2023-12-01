@@ -7,10 +7,10 @@ class Category(models.Model):
     title = models.CharField(max_length=255, db_index=True)
 
 class MenuItems(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
     title = models.CharField(max_length=255, db_index=True)
     price = models.DecimalField(max_digits=6, decimal_places=2, db_index=True)
     feature = models.BooleanField(db_index=True)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -20,7 +20,7 @@ class Cart(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
     class Meta:
-        unique_together = ('menuitems', 'user')
+        unique_together = ('user', 'menuitems')
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

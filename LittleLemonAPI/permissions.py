@@ -1,22 +1,11 @@
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
-from django.contrib.auth.models import User, Group
+from rest_framework import permissions
 
-@api_view()
-@permission_classes([IsAuthenticated])
-def manager_view(request):
-    if request.user.groups.filter(name='Manager').exists():
-        return Response(request.user)
-    else:
-        return Response({
-        'message':'You are not authorized.'
-    }, 403)
+class IsManager(permissions.BasePermission):
+    def has_permission(self, request, view):
+        if request.user.groups.filter(name='Manager').exists():
+            return True
 
-@api_view(['POST'])
-@permission_classes([IsAdminUser])
-def managers(request):
-    username = request.data['username']
-    return Response({
-        'message':'Only admin should see this.'
-    })
+class IsDeliveryCrew(permissions.BasePermission):
+    def has_permission(self, request, view):
+        if request.user.groups.filter(name='Delivery crew').exists():
+            return True
