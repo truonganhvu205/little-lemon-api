@@ -19,6 +19,11 @@ class MenuItemsSerializers(serializers.ModelSerializer):
         model = MenuItems
         fields= ['id', 'title', 'price', 'feature', 'category', 'category_id']
 
+class UserSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'groups']
+
 class CartSerializers(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
         queryset = User.objects.all(),
@@ -56,3 +61,8 @@ class OrderItemSerializers(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
         fields= ['id', 'order', 'menuitems', 'quantity', 'unit_price', 'price', 'menuitem_id']
+
+class OrderPutSerializer(serializers.ModelSerializer):
+    class Meta():
+        model = Order
+        fields = ['delivery_crew']
