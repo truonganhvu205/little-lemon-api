@@ -6,11 +6,17 @@ class Category(models.Model):
     slug = models.SlugField()
     title = models.CharField(max_length=255, db_index=True)
 
+    def __str__(self):
+        return self.title
+
 class MenuItems(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     title = models.CharField(max_length=255, db_index=True)
     price = models.DecimalField(max_digits=6, decimal_places=2, db_index=True)
     feature = models.BooleanField(db_index=True)
+
+    def __str__(self):
+        return self.title
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

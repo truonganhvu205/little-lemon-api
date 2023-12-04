@@ -23,5 +23,5 @@ urlpatterns = [
 
     # Order management
     path('orders', views.OrderView.as_view()),
-    path('orders/<int:pk>', views.OrderItemView.as_view()),
+    # path('orders/<int:pk>', views.OrderItemView.as_view()),
 ]

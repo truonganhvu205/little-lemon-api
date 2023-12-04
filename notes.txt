@@ -1,0 +1,15 @@
+Admin
+- admin
+- adminuser123$%^
+
+Delivery Crew
+- johndoe
+- johndoeuser123$%^
+
+Manager
+- janedoe
+- janedoeuser123$%^
+
+Customer
+- babydoe
+- babydoeuser123$%^
