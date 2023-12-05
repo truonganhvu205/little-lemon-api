@@ -1,14 +1,15 @@
 from rest_framework import serializers
+from .models import Category, MenuItem, Cart, Order, OrderItem
+from django.contrib.auth.models import User
 import bleach
-from .models import Category, MenuItems, Cart, Order, OrderItem
-from django.contrib.auth.models import User, Group
+from decimal import Decimal
 
 class CategorySerializers(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields= ['id', 'slug', 'title']
+        fields= ['id', 'title', 'slug']
 
-class MenuItemsSerializers(serializers.ModelSerializer):
+class MenuItemSerializers(serializers.ModelSerializer):
     category = CategorySerializers(read_only=True)
     category_id = serializers.IntegerField(write_only=True)
 
@@ -16,34 +17,39 @@ class MenuItemsSerializers(serializers.ModelSerializer):
         return bleach.clean(value)
 
     class Meta:
-        model = MenuItems
+        model = MenuItem
         fields= ['id', 'title', 'price', 'feature', 'category', 'category_id']
 
-class UserSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'email', 'groups']
-
 class CartSerializers(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(
+        queryset = User.objects.all(),
+        default = serializers.CurrentUserDefault()
+    )
+
+    def validate(self, attrs):
+        attrs['price'] = attrs['quantity'] * attrs['unit_price']
+        return attrs
+
     class Meta:
         model = Cart
-        fields= ['id', 'user', 'menuitems', 'quantity', 'unit_price', 'price']
-
-class Delivery_crew_username(serializers.ModelSerializer):
-    class Meta:
-        pass
-
-class OrderSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Order
-        fields= ['id', 'user', 'delivery_crew', 'status', 'total', 'date']
+        fields= ['id', 'user', 'menuitem', 'unit_price', 'quantity', 'price']
+        extra_kwargs = {
+            'price':{'read_only':True}
+        }
 
 class OrderItemSerializers(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
-        fields= ['id', 'order', 'menuitems', 'quantity', 'unit_price', 'price']
+        fields= ['id', 'order', 'menuitem', 'quantity', 'price']
 
-class OrderPutSerializer(serializers.ModelSerializer):
-    class Meta():
+class OrderSerializers(serializers.ModelSerializer):
+    orderitem = OrderItemSerializers(many=True, read_only=True, source='order')
+
+    class Meta:
         model = Order
-        fields = ['delivery_crew']
+        fields= ['id', 'user', 'delivery_crew', 'status', 'date', 'total', 'orderitem']
+
+class UserSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email']

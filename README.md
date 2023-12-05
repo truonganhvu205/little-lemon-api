@@ -1,23 +1,23 @@
 # Create a Django Project using pipenv
-## Install pipenv
-```bash
-pip3 install pipenv
-```
-
 ```bash
 mkdir littlelemonAPI
 
 cd littlelemonAPI
 ```
 
-## Install Django
+## Install pipenv
 ```bash
-pipenv install django
+pip3 install pipenv
 ```
 
 ## Activate virtual environment
 ```bash
 pipenv shell
+```
+
+## Install Django
+```bash
+pipenv install django
 ```
 
 ## Create Django project
@@ -42,5 +42,7 @@ pipenv install djoser
 
 # Run server
 ```bash
+python3 manage.py makemigrations
+python3 manage.py migrate
 python3 manage.py runserver
 ```
