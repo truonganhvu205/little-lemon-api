@@ -12,6 +12,7 @@ pip3 install pipenv
 
 ## Activate virtual environment
 ```bash
+pipenv --python 3.10
 pipenv shell
 ```
 
