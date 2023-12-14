@@ -1,8 +1,12 @@
-# Create a Django Project using pipenv
+# Clone project
 ```bash
 mkdir littlelemonAPI
 
 cd littlelemonAPI
+
+git init
+
+git clone https://github.com/truonganhvu205/little-lemon-API.git
 ```
 
 ## Install pipenv
