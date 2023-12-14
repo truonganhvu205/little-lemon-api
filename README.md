@@ -23,15 +23,11 @@ pipenv shell
 ## Install Django
 ```bash
 pipenv install django
-```
 
-## Create Django project [ option ]
-```bash
+# Create Django project
 django-admin startproject LittleLemon .
-```
 
-## Create Django app [ option ]
-```bash
+# Create Django app
 python3 manage.py startapp LittleLemonAPI
 ```
 
