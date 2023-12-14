@@ -43,3 +43,36 @@ python3 manage.py runserver
 ```
 
 # API endpoints
+```bash
+/auth/users
+/auth/users/me/
+/token/login/
+```
+
+## Menu-items endpoints
+```bash
+/api/menu-items
+/api/menu-items/{menuItemId}
+```
+
+## User group management endpoints
+```bash
+/api/groups/manager/users
+/api/groups/manager/users/{userId}
+```
+
+```bash
+/api/groups/delivery-crew/users
+/api/groups/delivery-crew/users/{userId}
+```
+
+## Cart management endpoints
+```bash
+/api/cart/menu-items
+```
+
+## Order management endpoints
+```bash
+/api/orders
+/api/orders/{orderId}
+```
