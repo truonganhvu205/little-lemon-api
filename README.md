@@ -46,7 +46,7 @@ python3 manage.py runserver
 ```bash
 /auth/users
 /auth/users/me/
-/token/login/
+/auth/token/login/ OR api/api-token-auth/
 ```
 
 ## Menu-items endpoints
