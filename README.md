@@ -52,18 +52,18 @@ python3 manage.py runserver
 ## Menu-items endpoints
 ```bash
 /api/menu-items
-/api/menu-items/{menuItemId}
+/api/menu-items/<int:pk>
 ```
 
 ## User group management endpoints
 ```bash
 /api/groups/manager/users
-/api/groups/manager/users/{userId}
+/api/groups/manager/users/<int:pk>
 ```
 
 ```bash
 /api/groups/delivery-crew/users
-/api/groups/delivery-crew/users/{userId}
+/api/groups/delivery-crew/users/<int:pk>
 ```
 
 ## Cart management endpoints
@@ -74,5 +74,5 @@ python3 manage.py runserver
 ## Order management endpoints
 ```bash
 /api/orders
-/api/orders/{orderId}
+/api/orders/<int:pk>
 ```
