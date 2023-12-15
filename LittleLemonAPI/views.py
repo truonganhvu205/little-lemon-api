@@ -71,7 +71,7 @@ class ManagerUserView(generics.ListCreateAPIView):
             return Response({'Message':'User had been added.'}, status.HTTP_201_CREATED)
         return Response({'Message':'Error.'}, status.HTTP_400_BAD_REQUEST)
 
-    permission_classes = [IsAdminUser | IsManager]
+    permission_classes = [IsManager]
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
 
 class SingleManagerUserView(generics.RetrieveDestroyAPIView):
@@ -91,7 +91,7 @@ class SingleManagerUserView(generics.RetrieveDestroyAPIView):
             return Response({'Message':'User had been removed.'}, status.HTTP_200_OK)
         return Response({'Message':'Error.'}, status.HTTP_404_NOT_FOUND)
 
-    permission_classes = [IsAdminUser | IsManager]
+    permission_classes = [IsManager]
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
 
 class DeliveryCrewUserView(generics.ListCreateAPIView):
@@ -111,7 +111,7 @@ class DeliveryCrewUserView(generics.ListCreateAPIView):
             return Response({'Message':'User had been added.'}, status.HTTP_201_CREATED)
         return Response({'Message':'Error.'}, status.HTTP_400_BAD_REQUEST)
 
-    permission_classes = [IsAdminUser | IsManager]
+    permission_classes = [IsManager]
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
 
 class SingleDeliveryCrewUserView(generics.RetrieveDestroyAPIView):
@@ -131,7 +131,7 @@ class SingleDeliveryCrewUserView(generics.RetrieveDestroyAPIView):
             return Response({'Message':'User had been removed.'}, status.HTTP_200_OK)
         return Response({'Message':'Error.'}, status.HTTP_404_NOT_FOUND)
 
-    permission_classes = [IsAdminUser | IsManager]
+    permission_classes = [IsManager]
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
 
 class CartView(generics.ListCreateAPIView, generics.DestroyAPIView):
