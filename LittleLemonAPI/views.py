@@ -178,8 +178,8 @@ class OrderView(generics.ListCreateAPIView):
                 orderitem = OrderItem(
                     order = order,
                     menuitem_id = item['menuitem_id'],
-                    quantity = item['quantity'],
-                    price = item['price']
+                    price = item['price'],
+                    quantity = item['quantity']
                 )
                 orderitem.save()
 
