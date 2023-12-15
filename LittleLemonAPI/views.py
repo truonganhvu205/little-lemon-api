@@ -174,7 +174,7 @@ class OrderView(generics.ListCreateAPIView):
         if order_serializers.is_valid():
             order = order_serializers.save()
             items = Cart.objects.all().filter(user=self.request.user).all()
-            for item in items:
+            for item in items.values():
                 orderitem = OrderItem(
                     order = order,
                     menuitem_id = item['menuitem_id'],
