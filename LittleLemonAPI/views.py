@@ -11,9 +11,6 @@ from .permissions import IsManager, IsDeliveryCrew
 from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 
-import math
-from datetime import date
-
 # Create your views here.
 class CategoryView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
