@@ -1,12 +1,8 @@
 # Clone project
 ```bash
-mkdir littlelemonAPI
-
-cd littlelemonAPI
-
 git init
-
 git clone https://github.com/truonganhvu205/little-lemon-API.git
+cd littlelemonAPI
 ```
 
 ## Install pipenv
