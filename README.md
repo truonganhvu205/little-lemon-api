@@ -63,13 +63,13 @@ Customer
 /auth/token/login/
 ```
 
-## Menu-items endpoints
+## Menu-items
 ```bash
 /api/menu-items
 /api/menu-items/<int:pk>
 ```
 
-## User group management endpoints
+## User group management
 ```bash
 /api/groups/manager/users
 /api/groups/manager/users/<int:pk>
@@ -80,12 +80,12 @@ Customer
 /api/groups/delivery-crew/users/<int:pk>
 ```
 
-## Cart management endpoints
+## Cart management
 ```bash
 /api/cart/menu-items
 ```
 
-## Order management endpoints
+## Order management
 ```bash
 /api/orders
 /api/orders/<int:pk>
