@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, MenuItem, Cart, Order, OrderItem
+from .models import Category, MenuItems, Cart, Order, OrderItems
 from django.contrib.auth.models import User
 import bleach
 from decimal import Decimal
@@ -9,7 +9,7 @@ class CategorySerializers(serializers.ModelSerializer):
         model = Category
         fields= ['id', 'title', 'slug']
 
-class MenuItemSerializers(serializers.ModelSerializer):
+class MenuItemsSerializers(serializers.ModelSerializer):
     category = CategorySerializers(read_only=True)
     category_id = serializers.IntegerField(write_only=True)
 
@@ -17,7 +17,7 @@ class MenuItemSerializers(serializers.ModelSerializer):
         return bleach.clean(value)
 
     class Meta:
-        model = MenuItem
+        model = MenuItems
         fields= ['id', 'title', 'price', 'feature', 'category', 'category_id']
 
 class CartSerializers(serializers.ModelSerializer):
@@ -32,18 +32,18 @@ class CartSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Cart
-        fields= ['id', 'user', 'menuitem', 'unit_price', 'quantity', 'price']
+        fields= ['id', 'user', 'menuitems', 'unit_price', 'quantity', 'price']
         extra_kwargs = {
             'price':{'read_only':True}
         }
 
-class OrderItemSerializers(serializers.ModelSerializer):
+class OrderItemsSerializers(serializers.ModelSerializer):
     class Meta:
-        model = OrderItem
-        fields= ['id', 'order', 'menuitem', 'quantity', 'price']
+        model = OrderItems
+        fields= ['id', 'order', 'menuitems', 'quantity', 'price']
 
 class OrderSerializers(serializers.ModelSerializer):
-    orderitem = OrderItemSerializers(many=True, read_only=True, source='order')
+    orderitem = OrderItemsSerializers(many=True, read_only=True, source='order')
 
     class Meta:
         model = Order

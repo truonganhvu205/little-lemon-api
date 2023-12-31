@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseBadRequest
 from rest_framework import generics, viewsets, status
 from django.contrib.auth.models import User, Group
-from .models import Category, MenuItem, Cart, Order, OrderItem
-from .serializers import CategorySerializers, MenuItemSerializers,\
+from .models import Category, MenuItems, Cart, Order, OrderItems
+from .serializers import CategorySerializers, MenuItemsSerializers,\
                         CartSerializers, OrderSerializers, \
-                        OrderItemSerializers, UserSerializers
+                        OrderItemsSerializers, UserSerializers
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .permissions import IsManager, IsDeliveryCrew
 from rest_framework.response import Response
@@ -25,9 +25,9 @@ class CategoryView(generics.ListCreateAPIView):
 
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
 
-class MenuItemView(generics.ListCreateAPIView):
-    queryset = MenuItem.objects.all()
-    serializer_class = MenuItemSerializers
+class MenuItemsView(generics.ListCreateAPIView):
+    queryset = MenuItems.objects.all()
+    serializer_class = MenuItemsSerializers
 
     search_fields = ['title', 'category__title']
     ordering_fields = ['price']
@@ -42,8 +42,8 @@ class MenuItemView(generics.ListCreateAPIView):
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
 
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = MenuItem.objects.all()
-    serializer_class = MenuItemSerializers
+    queryset = MenuItems.objects.all()
+    serializer_class = MenuItemsSerializers
 
     def get_permissions(self):
         permission_classes = []
@@ -175,7 +175,7 @@ class OrderView(generics.ListCreateAPIView):
             order = order_serializers.save()
             items = Cart.objects.all().filter(user=self.request.user).all()
             for item in items.values():
-                orderitem = OrderItem(
+                orderitem = OrderItems(
                     order = order,
                     menuitem_id = item['menuitem_id'],
                     price = item['price'],

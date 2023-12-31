@@ -9,7 +9,7 @@ urlpatterns = [
     path('category', views.CategoryView.as_view()),
 
     # Menu-items
-    path('menu-items', views.MenuItemView.as_view()),
+    path('menu-items', views.MenuItemsView.as_view()),
     path('menu-items/<int:pk>', views.SingleMenuItemView.as_view()),
 
     # User group management

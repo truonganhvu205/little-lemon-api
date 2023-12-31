@@ -1,8 +1,8 @@
 # Clone project
 ```bash
 git init
-git clone https://github.com/truonganhvu205/little-lemon-API.git
-cd littlelemonAPI
+git clone https://github.com/truonganhvu205/little-lemon-api.git
+cd little-lemon-api
 ```
 
 ## Install pipenv
@@ -16,13 +16,12 @@ pipenv --python 3.10
 pipenv shell
 ```
 
-## Install Django
+## Install Django & frameworks
 ```bash
+# Django
 pipenv install django
-```
 
-## Install Framework
-```bash
+# Frameworks
 pipenv install djangorestframework
 pipenv install django-debug-toolbar
 # pipenv install djangorestframework-xml
@@ -39,10 +38,29 @@ python3 manage.py runserver
 ```
 
 # API endpoints
+## Account required
+```bash
+Admin
+    admin
+    adminuser123$%^
+
+Delivery crew
+    johndoe
+    johndoeuser123$%^
+
+Manager
+    janedoe
+    janedoeuser123$%^
+
+Customer
+    babydoe
+    babydoeuser123$%^
+```
+
 ```bash
 /auth/users
 /auth/users/me/
-/auth/token/login/ OR api/api-token-auth/
+/auth/token/login/
 ```
 
 ## Menu-items endpoints
@@ -71,4 +89,9 @@ python3 manage.py runserver
 ```bash
 /api/orders
 /api/orders/<int:pk>
+```
+
+## Deactivate virtual environment
+```bash
+exit
 ```
